@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    
+    <!-- MathJax Configuration -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'a']
+        }
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/core-js-bundle@3/minified.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <!-- Security: Disable right-click and developer tools -->
+    <script>
+      // Disable right-click context menu
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.keyCode === 123) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+Shift+I (DevTools)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+Shift+J (Console)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+U (View Source)
+        if (e.ctrlKey && e.keyCode === 85) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+Shift+C (Element Inspector)
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+          e.preventDefault();
+          return false;
+        }
+        
+        // Ctrl+S (Save Page)
+        if (e.ctrlKey && e.keyCode === 83) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      
+      // Disable text selection
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      // Disable drag and drop
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      // Disable print screen
+      document.addEventListener('keyup', function(e) {
+        if (e.keyCode === 44) {
+          e.preventDefault();
+          return false;
+        }
+      });
+      
+      // Additional protection - clear console periodically
+      setInterval(function() {
+        console.clear();
+      }, 1000);
+      
+      // Override console methods to prevent debugging
+      if (typeof console !== 'undefined') {
+        console.log = function() {};
+        console.warn = function() {};
+        console.error = function() {};
+        console.debug = function() {};
+        console.info = function() {};
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
+    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
+  </body>
+</html>
